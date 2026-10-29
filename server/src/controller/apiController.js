@@ -1,6 +1,9 @@
 import { checkLoginCredentials, updateStatusOffline } from "../service/loginService.js";
 import userService from "../service/userService.js"
 import jwt from "jsonwebtoken";
+require("dotenv").config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // API Login
 const handleLoginapi = async (req, res) => {
@@ -17,7 +20,7 @@ const handleLoginapi = async (req, res) => {
         // Tạo access token
         const access_token = jwt.sign(
             { mssv: user.mssv, role: user.role }, 
-            "your_secret_key",                  
+            JWT_SECRET,
             { expiresIn: "1h" }                 
         );
 
@@ -44,7 +47,7 @@ const logoutUser = (req, res) => {
         return res.status(401).json({ message: "Token is required" });
     }
 
-    jwt.verify(token, "your_secret_key", (err, decoded) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(403).json({ message: "Invalid token" });
         }

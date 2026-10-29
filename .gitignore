@@ -1,2 +1,48 @@
-node_modules
-node_modules/*
+# Dependencies and generated output
+node_modules/
+client/dist/
+server/dist/
+coverage/
+.npm-cache/
+
+# Local environment files and credentials
+.env
+.env.*
+!.env.example
+*.local
+credentials.json
+service-account*.json
+secrets.json
+*.secret
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+
+# Database dumps and local data
+*.sql
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.swp
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*.local.json
